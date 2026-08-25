@@ -1,0 +1,362 @@
+/* ═══════════════════════════════════════════════════════════
+   TASKFLOW — style.css (Premium & Minimalista)
+   Programador Full Stack · SENAI CTGAS-ER · Prof. Alan Glei
+   Semana 2 (HTML + CSS) + Semana 3 (JavaScript no Navegador)
+   ═══════════════════════════════════════════════════════════ */
+
+/* ── 1. RESET ─────────────────────────────────────────────── */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+ 
+/* ── 2. BASE ──────────────────────────────────────────────── */
+body {
+  background-color: #FAFAFC;
+  color: #e9e5e5;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── 5. CONTADORES ────────────────────────────────────────── */
+#contadores {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: #6B7280;
+  flex-wrap: wrap;
+}
+
+#cont-total     { color: #6B7280; }
+#cont-pendentes { color: #D97706; font-weight: 600; }
+#cont-concluidas{ color: #059669; font-weight: 600; }
+
+.separador {
+  color: #D1D5DB;
+  user-select: none;
+}
+
+/* ── 6. MAIN ──────────────────────────────────────────────── */
+main {
+  padding: 40px 0;
+  flex: 1;
+  width: 100%;
+  max-width: 580px;
+  margin: 0 auto;
+}
+
+/* ── 7. FORMULÁRIO ────────────────────────────────────────── */
+#formulario {
+  margin-bottom: 28px;
+}
+
+.campo-linha {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  background: #FFFFFF;
+  padding: 8px;
+  border-radius: 12px;
+  border: 1px solid #E5E7EB;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02), 0 4px 12px rgba(0, 0, 0, 0.03);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.campo-linha:focus-within {
+  border-color: #111827;
+  box-shadow: 0 0 0 3px rgba(17, 24, 39, 0.06);
+}
+
+#input-tarefa {
+  flex: 1;
+  min-width: 160px;
+  padding: 10px 12px;
+  background-color: transparent;
+  color: #111827;
+  border: none;
+  font-size: 0.95rem;
+  font-family: inherit;
+  outline: none;
+}
+
+#input-tarefa::placeholder {
+  color: #9CA3AF;
+}
+
+#sel-prioridade {
+  padding: 10px 12px;
+  background-color: #F3F4F6;
+  color: #374151;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  font-family: inherit;
+  outline: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+#sel-prioridade:hover {
+  background-color: #E5E7EB;
+}
+
+#btn-adicionar {
+  padding: 10px 18px;
+  background-color: #111827;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  white-space: nowrap;
+}
+
+#btn-adicionar:hover {
+  background-color: #1F2937;
+}
+
+#btn-adicionar:active {
+  transform: scale(0.98);
+}
+
+#btn-adicionar:focus {
+  outline: none;
+}
+
+/* ── 8. CONTROLES (FILTROS) ───────────────────────────────── */
+#controles {
+  margin-bottom: 24px;
+}
+
+#filtros {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  border-bottom: 1px solid #E5E7EB;
+  padding-bottom: 12px;
+}
+
+.btn-filtro {
+  padding: 6px 14px;
+  background-color: transparent;
+  color: #6B7280;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  transition: color 0.15s ease, background-color 0.15s ease;
+}
+
+.btn-filtro:hover {
+  color: #111827;
+  background-color: #F3F4F6;
+}
+
+.btn-filtro.ativo {
+  background-color: #F3F4F6;
+  color: #111827;
+  font-weight: 600;
+}
+
+/* ── 9. LISTA DE TAREFAS ──────────────────────────────────── */
+#lista-tarefas {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* ── 10. TAREFA ───────────────────────────────────────────── */
+.tarefa {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  background-color: #FFFFFF;
+  border: 1px solid #E5E7EB;
+  border-left: 3px solid #D1D5DB;
+  border-radius: 10px;
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
+  animation: slideUp 0.25s ease-out forwards;
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.tarefa:hover {
+  border-color: #D1D5DB;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+}
+
+/* Prioridades — cor da linha lateral sutil */
+.tarefa.alta   { border-left-color: #EF4444; }
+.tarefa.media  { border-left-color: #F59E0B; }
+.tarefa.baixa  { border-left-color: #10B981; }
+
+/* Estado concluída */
+.tarefa.concluida {
+  background-color: #F9FAFB;
+  border-color: #E5E7EB;
+  border-left-color: #D1D5DB !important;
+  opacity: 0.6;
+}
+
+.tarefa.concluida .texto-tarefa {
+  text-decoration: line-through;
+  color: #9CA3AF;
+}
+
+/* ── 11. TEXTO DA TAREFA ──────────────────────────────────── */
+.texto-tarefa {
+  flex: 1;
+  font-size: 0.9375rem;
+  color: #1F2937;
+  cursor: pointer;
+  word-break: break-word;
+}
+
+/* ── 12. BADGE DE PRIORIDADE ─────────────────────────────── */
+.badge-prioridade {
+  font-size: 0.65rem;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.badge-alta    { background-color: #FEF2F2; color: #DC2626; }
+.badge-media   { background-color: #FFFBEB; color: #D97706; }
+.badge-baixa   { background-color: #ECFDF5; color: #059669; }
+
+/* ── 13. BOTÃO DELETAR ────────────────────────────────────── */
+.btn-deletar {
+  background: transparent;
+  border: none;
+  color: #9CA3AF;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 4px 6px;
+  border-radius: 4px;
+  line-height: 1;
+  flex-shrink: 0;
+  transition: color 0.15s ease, background-color 0.15s ease;
+}
+
+.btn-deletar:hover {
+  color: #DC2626;
+  background-color: #FEF2F2;
+}
+
+/* ── 14. MENSAGEM VAZIA ───────────────────────────────────── */
+.msg-vazia {
+  text-align: center;
+  color: #9CA3AF;
+  font-size: 0.875rem;
+  padding: 48px 0;
+  letter-spacing: -0.01em;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* ── 15. FOOTER ───────────────────────────────────────────── */
+footer {
+  padding: 24px 16px;
+  text-align: center;
+  color: #9ca3af;
+  font-size: 0.8125rem;
+  border-top: 1px solid #E5E7EB;
+  margin-top: auto;
+  background-color: #FFFFFF;
+}
+
+/* ── 16. KANBAN LAYOUT ────────────────────────────────────── */
+.container-kanban {
+  padding: 32px 24px;
+  flex: 1;
+  width: 100%;
+  max-width: 1140px;
+  margin: 0 auto;
+}
+
+.kanban-quadro {
+  display: flex;
+  gap: 24px;
+  margin-top: 24px;
+  align-items: flex-start;
+}
+
+@media (max-width: 868px) {
+  .kanban-quadro {
+    flex-direction: column;
+  }
+}
+
+.coluna {
+  flex: 1;
+  min-width: 0;
+  background: #f4f5f7;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+}
+
+.coluna-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid #e5e7eb;
+}
+
+.coluna-header h2 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #1f2937;
+}
+
+.coluna-badge {
+  background-color: #e5e7eb;
+  color: #374151;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 12px;
+}
+
+.coluna-afazer .coluna-header {
+  border-bottom-color: #3b82f6;
+}
+
+.coluna-andamento .coluna-header {
+  border-bottom-color: #f59e0b;
+}
+
+.coluna-teste .coluna-header {
+  border-bottom-color: #10b981;
+}

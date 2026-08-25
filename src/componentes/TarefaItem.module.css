@@ -1,0 +1,134 @@
+.tarefa {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  background-color: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-left: 4px solid #d1d5db;
+  border-radius: 12px;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  animation: slideUp 0.25s ease-out forwards;
+}
+                      
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+                
+.tarefa:hover {
+  border-color: #d1d5db;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+  transform: translateY(-1px);
+}
+                                 
+.alta {
+  border-left-color: #ef4444;
+}                                                                              
+                             
+.media {
+  border-left-color: #f59e0b;              
+}
+                       
+.baixa {
+  border-left-color: #10b981;
+}
+                                         
+.concluida {
+  background-color: #f9fafb;
+  border-color: #e5e7eb;
+  border-left-color: #9ca3af !important;
+  opacity: 0.7;
+}
+
+.textoTarefa {
+  flex: 1;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: #1f2937;
+  cursor: pointer;
+  word-break: break-word;
+  transition: color 0.2s ease;
+}
+
+.texto-tarefa {
+  text-decoration: line-through;
+  color: #9ca3af;
+}
+
+.badge-prioridade {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  padding: 4px 8px;
+  border-radius: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.badge-alta {
+  background-color: #fef2f2;
+  color: #dc2626;
+}
+
+.badge-media {
+  background-color: #fffbeb;
+  color: #d97706;
+}
+
+.badge-baixa {
+  background-color: #ecfdf5;
+  color: #059669;
+}
+
+.acoes {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.btnMover {
+  background: #f3f4f6;
+  border: 1px solid #e5e7eb;
+  color: #4b5563;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 6px;
+  line-height: 1;
+  transition: all 0.15s ease;
+}
+
+.btnMover:hover {
+  background-color: #e5e7eb;
+  color: #111827;
+}
+
+.btnDeletar {
+  background: transparent;
+  border: none;
+  color: #9ca3af;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 6px;
+  line-height: 1;
+  flex-shrink: 0;
+  transition: all 0.15s ease;
+}
+
+.btnDeletar:hover {
+  color: #dc2626;
+  background-color: #fef2f2;
+}
