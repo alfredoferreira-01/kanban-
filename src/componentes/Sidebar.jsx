@@ -2,10 +2,6 @@ import { NavLink } from 'react-router';
 
 import styles from './Sidebar.module.css';
 
-// Recebe logado e onLogout do App.jsx via props
-
-// Dia 3: estas props virão do useAuth() — sem prop drilling
-
 function Sidebar({ logado, onLogout }) {
 
 const linkClass = ({ isActive }) =>
