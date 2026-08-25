@@ -1,6 +1,5 @@
 import { NavLink } from 'react-router';
-
-import styles from './Sidebar.module.css';
+import styles from '../componentes/Sidebar.module.css';
 
 function Sidebar({ logado, onLogout }) {
 
