@@ -2,11 +2,11 @@ import { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Sidebar from './componentes/Sidebar';
 import RotaPrivada from './componentes/RotaPrivada';
-import Sobre from './pages/Sobre';
-import Login from './pages/Login'; 
+import Sobre from './Pages/Sobre';
+import Login from './Pages/Login'; 
 import './App.css';
 import Tarefav1 from './componentes/Tarefav1';
-import Kanban from './pages/Kanban'; 
+import Kanban from './Pages/Kanban'; 
 
 function App() {
 
