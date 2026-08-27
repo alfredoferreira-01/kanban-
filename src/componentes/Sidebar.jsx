@@ -1,5 +1,5 @@
 import { NavLink } from "react-router";
-import styles from "./Sidebar.module.css";
+import styles from "./Sidebar.module.Css";
 
 function Sidebar({ logado, onLogout }) {
   const linkClass = ({ isActive }) =>
