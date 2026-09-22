@@ -1,48 +1,69 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router';
-import './Login.css';
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import "./Login.css";
+import { useAuth } from "../contexts/AuthContext";
+import api from "../api/api";
 
-function Login({ onLogin }) {
-  const [usuario, setUsuario] = useState('');
-  const [senha, setSenha] = useState('');
-  const [erro, setErro] = useState('');
+function Login() {
+  // const [usuario, setUsuario] = useState("");
+  const [senha, setSenha] = useState("");
+  const [erro, setErro] = useState("");
+  const { login } = useAuth();
   const navigate = useNavigate();
+  const [shake, setShake] = useState(false);
+  const [email, setEmail] = useState("");
 
-  function handleLogin(e) {
-    e?.preventDefault();
-
-    if (usuario === 'admin' && senha === '1234') {
-      onLogin(); 
-      navigate('/'); 
-      return;
+  async function handleLogin() {
+    setErro("");
+    try {
+      const resposta = await api.post("/auth/login", {
+        email,
+        senha,
+      });
+      const { token, usuario } = resposta.data;
+      login(usuario, token);
+      navigate("/");
+    } catch (err) {
+      setErro(err.response?.data?.erro || "Erro ao fazer login");
+      setShake(true);
+      setTimeout(() => setShake(false), 5000);
     }
-
-    setErro('Usuário ou senha incorretos');
   }
 
   return (
     <div className="login-container">
-      <h2>Login</h2>
-      <form onSubmit={handleLogin}>
-        <div>
-          <label>Usuário:</label>
-          <input 
-            type="text" 
-            value={usuario} 
-            onChange={(e) => setUsuario(e.target.value)} 
-          />
-        </div>
-        <div>
-          <label>Senha:</label>
-          <input 
-            type="password" 
-            value={senha} 
-            onChange={(e) => setSenha(e.target.value)} 
-          />
-        </div>
-        {erro && <p style={{ color: 'red' }}>{erro}</p>}
-        <button type="submit">Entrar</button>
-      </form>
+      <div className={`login-card ${shake ? "shake" : ""}`}>
+        <h1 className="login-logo">TaskFlow</h1>
+        <p className="login-subtitulo">Faça login para continuar</p>
+
+        <input
+          className="login-input"
+          type="text"
+          placeholder="Usuário"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+
+        <input
+          className="login-input"
+          type="password"
+          placeholder="Senha"
+          value={senha}
+          onChange={(e) => setSenha(e.target.value)}
+          onKeyDown={(e) => e.key === "Enter" && handleLogin()}
+        />
+
+        {erro && <p className="login-erro">{erro}</p>}
+
+        <button className="login-btn" onClick={handleLogin}>
+          Entrar
+        </button>
+
+        <p className="login-aviso">
+          Este login é apenas para fins didáticos. Credenciais reais vêm no
+          módulo back-end.
+        </p>
+      </div>
     </div>
   );
 }
