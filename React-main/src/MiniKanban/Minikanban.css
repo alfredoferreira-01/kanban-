@@ -1,0 +1,290 @@
+/* ==========================================
+   RESET & VARIÁVEIS GLOBAIS
+   ========================================== */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+:root {
+  --primary: #0079bf;
+  --primary-hover: #026aa7;
+  --bg-board: #f4f6f8;
+  --coluna-bg: #ebecf0;
+  --text-main: #172b4d;
+  --text-muted: #5e6c84;
+  --border-color: #dfe1e6;
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.12);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 8px 24px rgba(9, 30, 66, 0.2);
+}
+
+body {
+  background: linear-gradient(135deg, #0079bf 0%, #005a9c 100%);
+  min-height: 100vh;
+  color: var(--text-main);
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 24px 16px;
+  width: 100%;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ==========================================
+   CABEÇALHO
+   ========================================== */
+h1 {
+  font-size: 1.8rem;
+  font-weight: 800;
+  text-align: center;
+  color: #ffffff;
+  margin-bottom: 24px;
+  letter-spacing: -0.02em;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* ==========================================
+   FORMULÁRIO DE TAREFAS (Glassmorphism)
+   ========================================== */
+.form-tarefa {
+  display: flex;
+  gap: 12px;
+  max-width: 1200px;
+  margin: 0 auto 32px auto;
+  width: 100%;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 20px;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: var(--shadow-md);
+  flex-wrap: wrap;
+}
+
+.form-tarefa input,
+.form-tarefa select {
+  flex: 1;
+  min-width: 220px;
+  max-width: 100%;
+  padding: 12px 16px;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  background-color: #ffffff;
+  color: var(--text-main);
+  transition: all 0.25s ease;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.form-tarefa input:focus,
+.form-tarefa select:focus {
+  outline: none;
+  border-color: #ffffff;
+  box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.25);
+}
+
+.form-tarefa button {
+  width: 100%;
+  padding: 12px 24px;
+  background-color: #ffffff;
+  color: var(--primary);
+  border: none;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.form-tarefa button:hover {
+  background-color: #f0f4f8;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+/* ==========================================
+   KANBAN BOARD & COLUNAS
+   ========================================== */
+.kanban-board {
+  display: flex;
+  max-width: 100%;
+  gap: 20px;
+  justify-content: flex-start;
+  align-items: flex-start;
+  overflow-x: auto;
+  padding-bottom: 24px;
+  flex: 1;
+  -webkit-overflow-scrolling: touch;
+}
+
+.coluna {
+  flex: 0 0 300px;
+  background-color: var(--coluna-bg);
+  border-radius: 14px;
+  padding: 14px;
+  max-height: calc(100vh - 220px);
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.coluna h2 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin: 4px 4px 14px 4px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--text-main);
+  letter-spacing: -0.01em;
+}
+
+.contador {
+  font-size: 0.75rem;
+  background-color: #d0d4dc;
+  color: var(--text-muted);
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-weight: 600;
+}
+
+.cards-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  overflow-y: auto;
+  padding: 2px 4px;
+  flex: 1;
+}
+
+/* ==========================================
+   CARDS DE TAREFAS
+   ========================================== */
+.card {
+  background-color: #ffffff;
+  padding: 14px;
+  border-radius: 10px;
+  box-shadow: var(--shadow-sm);
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
+  position: relative;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  background-color: #fafbfc;
+}
+
+.card p {
+  margin: 0 0 12px 0;
+  word-break: break-word;
+  color: var(--text-main);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+/* ==========================================
+   BOTÕES E AÇÕES DOS CARDS
+   ========================================== */
+.acoes {
+  display: flex;
+  justify-content: flex-end;
+  gap: 6px;
+  opacity: 0.8;
+  transition: opacity 0.2s ease;
+}
+
+@media (min-width: 768px) {
+  .acoes {
+    opacity: 0.6;
+  }
+}
+
+.card:hover .acoes {
+  opacity: 1;
+}
+
+.acoes button {
+  padding: 6px 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  background-color: #ffffff;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.acoes button:hover {
+  background-color: var(--coluna-bg);
+  color: var(--text-main);
+  border-color: #c0c6d0;
+}
+
+.btn-excluir {
+  color: #eb5a46 !important;
+  border-color: transparent !important;
+  background-color: transparent !important;
+}
+
+.btn-excluir:hover {
+  background-color: #ffebe6 !important;
+  color: #de350b !important;
+}
+
+/* ==========================================
+   TAGS DE PRIORIDADE
+   ========================================== */
+.tag-prioridade {
+  font-size: 0.65rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 6px;
+  display: inline-block;
+  margin-bottom: 8px;
+  letter-spacing: 0.06em;
+}
+
+.card.prioridade-alta .tag-prioridade {
+  background-color: #ffeff0;
+  color: #de350b;
+}
+
+.card.prioridade-media .tag-prioridade {
+  background-color: #fff8db;
+  color: #b78103;
+}
+
+.card.prioridade-baixa .tag-prioridade {
+  background-color: #e3fcef;
+  color: #006644;
+}
+
+/* ==========================================
+   RODAPÉ
+   ========================================== */
+footer {
+  margin-top: auto;
+  padding-top: 30px;
+  padding-bottom: 10px;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 0.85rem;
+  letter-spacing: 0.02em;
+}

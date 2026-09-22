@@ -1,0 +1,120 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/*body {
+  background: radial-gradient(rgb(128, 7, 172), #000);
+}*/
+body {
+  background: url("./assets/montanhas.jpg");
+  background-repeat: no-repeat; 
+  background-size: cover; 
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.header {
+  text-align: center;
+  color: white;
+  margin-top: 30px;
+}
+
+#painel-filtros {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.formulario-tarefa,
+#bloco-tarefas {
+  color: #868484;
+  background: radial-gradient(rgb(128, 7, 172), #000);
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 25px auto;
+  padding: 20px;
+  border-top: 5px solid #3c48ca8e;
+  border-radius: 12px;
+  row-gap: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+input,
+textarea,
+select {
+  width: 100%;
+  padding: 10px 14px;
+  background: #1b2a3b48;
+  color: rgb(116, 116, 116);
+  border: 1px solid #334155;
+  border-radius: 6px;
+  font-size: 1rem;
+  outline: none;
+}
+
+button, #contador, .filtro {
+  background-color: #3c48ca8e;
+  color: #ffff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+button:hover {
+  transform: translateY(-1px);
+  background-color: #3c47ca;
+}
+#contador, .filtro {
+  margin: 0 2px;
+}
+
+#lista-tarefas {
+  list-style: none;
+  text-align: center;
+}
+
+/*.tarefa {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+  background: #3c48ca8e;
+  border-top: 2px solid #ce9014da;
+  margin-top: 5px;
+  padding: 10px;
+  border-radius: 6px;
+}
+
+.btn-remover {
+  background: rgba(255, 0, 0, 0.137);
+}
+
+.btn-remover:hover {
+  background: rgba(255, 0, 0, 0.801);
+}
+
+.concluida {
+  text-decoration: line-through;
+  color: #b4bcc7be;
+}*/
+
+.app-layout{
+  display: flex;
+  min-height: 100vh;
+}
+
+.app-conteudo{
+  margin-left: 220px;
+  flex: 1;
+  min-width: 0;
+}

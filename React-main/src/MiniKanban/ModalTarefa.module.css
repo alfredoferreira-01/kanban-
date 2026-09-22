@@ -1,0 +1,122 @@
+/* ==========================================
+   MODAL OVERLAY & CONTAINER (LIMPO / SEM EFEITOS PESADOS)
+   ========================================== */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5); /* Fundo escuro simples */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 24px;
+}
+
+.card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 32px;
+  width: 100%;
+  max-width: 440px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1),
+              0 8px 10px -6px rgba(0, 0, 0, 0.04);
+}
+
+/* ==========================================
+   TIPOGRAFIA & TÍTULO
+   ========================================== */
+.card h2 {
+  color: #1e293b;
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin: 0 0 4px 0;
+}
+
+/* ==========================================
+   CAMPOS DE ENTRADA (INPUTS E SELECTS)
+   ========================================== */
+.card input,
+.card select {
+  background: #ffffff;
+  color: #1e293b;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  padding: 12px 14px;
+  font-size: 0.95rem;
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.card input::placeholder {
+  color: #94a3b8;
+}
+
+.card input:focus,
+.card select:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+/* ==========================================
+   ETIQUETA DE CIDADE
+   ========================================== */
+.cidade {
+  color: #2563eb;
+  background: #eff6ff;
+  border: 1px solid #dbeafe;
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* ==========================================
+   BOTÕES E AÇÕES
+   ========================================== */
+.botoes {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  margin-top: 8px;
+}
+
+.botoes button {
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+/* Botão Cancelar / Secundário */
+.botoes button:first-child {
+  background: #f1f5f9;
+  border: 1px solid #cbd5e1;
+  color: #475569;
+}
+
+.botoes button:first-child:hover {
+  background: #e2e8f0;
+  color: #1e293b;
+}
+
+/* Botão Confirmar / Primário */
+.botoes button:last-child {
+  background: #2563eb;
+  color: #ffffff;
+  border: none;
+}
+
+.botoes button:last-child:hover {
+  background: #1d4ed8;
+}

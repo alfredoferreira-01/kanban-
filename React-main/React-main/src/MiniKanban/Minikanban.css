@@ -1,0 +1,240 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+body {
+  background-color: #0079bf; 
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 16px; 
+}
+
+h1 {
+  font-size: 1.5rem; 
+  font-weight: 700;
+  text-align: center;
+  color: #ffffff;
+  margin-bottom: 20px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.form-tarefa {
+  display: flex;
+  gap: 12px;
+  max-width: 1200px;
+  margin-bottom: 30px;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(8px);
+  padding: 16px;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  flex-wrap: wrap; 
+}
+
+.form-tarefa input,
+.form-tarefa select {
+  flex: 1;
+  min-width: 200px; 
+  max-width: 100%;
+  padding: 10px 14px;
+  border: 2px solid transparent;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  background-color: #ffffff;
+  transition: all 0.2s ease;
+}
+
+.form-tarefa input:focus,
+.form-tarefa select:focus {
+  outline: none;
+  border-color: #0079bf;
+  box-shadow: 0 0 0 2px rgba(0, 121, 191, 0.3);
+}
+
+.form-tarefa button {
+  width: 100%;
+  padding: 10px 20px;
+  background-color: #0079bf;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.form-tarefa button:hover {
+  background-color: #026aa7;
+}
+
+.kanban-board {
+  display: flex;
+  max-width: 1400px;
+  gap: 16px;
+  justify-content: flex-start; 
+  align-items: flex-start;
+  overflow-x: auto;
+  padding-bottom: 16px;
+  -webkit-overflow-scrolling: touch;
+}
+
+
+.coluna {
+  flex: 0 0 280px;
+  background-color: #ebecf0;
+  border-radius: 12px;
+  padding: 12px;
+  max-height: calc(100vh - 200px);
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.coluna h2 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin: 4px 4px 12px 4px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #172b4d;
+  letter-spacing: -0.003em;
+}
+
+.contador {
+  font-size: 0.8rem;
+  background-color: #dfe1e6;
+  color: #5e6c84;
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-weight: 500;
+}
+
+.cards-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  overflow-y: auto;
+  padding: 2px 4px;
+  flex: 1; 
+}
+
+.card {
+  background-color: #ffffff;
+  padding: 10px 12px;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(9, 30, 66, 0.15);
+  cursor: pointer;
+  transition: background-color 0.1s ease, box-shadow 0.1s ease;
+  position: relative;
+}
+
+.card:hover {
+  background-color: #f4f5f7;
+  box-shadow: 0 4px 8px rgba(9, 30, 66, 0.25);
+}
+
+.card p {
+  margin: 0 0 8px 0;
+  word-break: break-word;
+  color: #172b4d;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+.acoes {
+  display: flex;
+  justify-content: flex-end;
+  gap: 4px;
+  opacity: 1; 
+  transition: opacity 0.2s ease;
+}
+
+@media (min-width: 768px) {
+  .acoes {
+    opacity: 0.8;
+  }
+}
+
+.card:hover .acoes {
+  opacity: 1;
+}
+
+.acoes button {
+  padding: 6px 10px; 
+  font-size: 0.75rem;
+  font-weight: 500;
+  border: 1px solid #dfe1e6;
+  border-radius: 4px;
+  background-color: #ffffff;
+  color: #42526e;
+  cursor: pointer;
+  transition: all 0.1s ease;
+}
+
+.acoes button:hover {
+  background-color: #ebecf0;
+  color: #172b4d;
+}
+
+.btn-excluir {
+  color: #b04632 !important;
+  border-color: transparent !important;
+  background-color: transparent !important;
+}
+
+.btn-excluir:hover {
+  background-color: #ffebe6 !important;
+  color: #de350b !important;
+}
+
+footer {
+  margin-top: 40px;
+  margin-bottom: 20px;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.85rem;
+}
+
+.tag-prioridade {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 2px 6px;
+  border-radius: 4px;
+  display: inline-block;
+  margin-bottom: 6px;
+  letter-spacing: 0.04em;
+}
+
+.card.prioridade-alta {
+  border-left: none;
+}
+.card.prioridade-alta .tag-prioridade {
+  background-color: #ff8f8f;
+  color: #ffffff;
+}
+
+.card.prioridade-media {
+  border-left: none;
+}
+.card.prioridade-media .tag-prioridade {
+  background-color: #f2d600;
+  color: #172b4d;
+}
+
+.card.prioridade-baixa {
+  border-left: none;
+}
+.card.prioridade-baixa .tag-prioridade {
+  background-color: #61bd4f;
+  color: #ffffff;
+}
